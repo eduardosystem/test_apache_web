@@ -21,9 +21,13 @@ CMD ["/ usr / sbin / httpd", "-D", "FOREGROUND"]
 # CREAR IMAGEN DOCKERFILE
 ''
 
-- 	Creamos una carpeta: test_apache_web
+- 	Creamos una carpeta: 
+      ```
+      test_apache_web
+      ```
 
 - 	Creamos el archivo: index.html
+      ```
       <!DOCTYPE html>
       <html>
       <body>
@@ -31,18 +35,23 @@ CMD ["/ usr / sbin / httpd", "-D", "FOREGROUND"]
       </h2>https://apache.com</h2>
       </body>
       </html>
+      ```
 
 - 	Creamos el archivo: Dockerfile
-
+      ```
       FROM centos:latest
       MAINTAINER EduardoRuiz
       RUN yum -y install httpd
       COPY index.html /var/www/html
       CMD ["/usr/sbin/httpd","-D","FOREGROUND"]
       EXPOSE 80
-
+      ```
 - 	Compilamos o creamos la imagen: desde la carpeta raiz
+      ```
       $ docker build ./test_apache_web/ -t servidorweb:v1
-
+      ```
+      
 - 	Ejecutamos la imagen
+      ```
       $ docker run -dit -p 1234:8080 servidorweb:v1
+      ```
