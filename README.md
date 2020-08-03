@@ -21,28 +21,28 @@ CMD ["/ usr / sbin / httpd", "-D", "FOREGROUND"]
 # CREAR IMAGEN DOCKERFILE
 ''
 
-1.	Creamos una carpeta: test_apache_web
+- 	Creamos una carpeta: test_apache_web
 
-2.	Creamos el archivo: index.html
-<!DOCTYPE html>
-<html>
-<body>
-<h1>App demo apache, docker</h1>
-</h2>https://apache.com</h2>
-</body>
-</html>
+- 	Creamos el archivo: index.html
+      <!DOCTYPE html>
+      <html>
+      <body>
+      <h1>App demo apache, docker</h1>
+      </h2>https://apache.com</h2>
+      </body>
+      </html>
 
-3.	Creamos el archivo: Dockerfile
+- 	Creamos el archivo: Dockerfile
 
-FROM centos:latest
-MAINTAINER EduardoRuiz
-RUN yum -y install httpd
-COPY index.html /var/www/html
-CMD ["/usr/sbin/httpd","-D","FOREGROUND"]
-EXPOSE 80
+      FROM centos:latest
+      MAINTAINER EduardoRuiz
+      RUN yum -y install httpd
+      COPY index.html /var/www/html
+      CMD ["/usr/sbin/httpd","-D","FOREGROUND"]
+      EXPOSE 80
 
-4.	Compilamos o creamos la imagen: desde la carpeta raiz
-$ docker build ./test_apache_web/ -t servidorweb:v1
+- 	Compilamos o creamos la imagen: desde la carpeta raiz
+      $ docker build ./test_apache_web/ -t servidorweb:v1
 
-5.	Ejecutamos la imagen
-$ docker run -dit -p 1234:8080 servidorweb:v1
+- 	Ejecutamos la imagen
+      $ docker run -dit -p 1234:8080 servidorweb:v1
